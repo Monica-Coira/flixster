@@ -5,12 +5,30 @@
 .app-header {
   background-color: #8B0000;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   color: white;
   padding: 20px;
   margin-bottom: 20px;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.load-more-button {
+  background-color: #8B0000;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
@@ -26,4 +44,21 @@
   .search-bar form {
     flex-direction: column;
   }
+
+  p {
+    font-size: 14px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+}
+
+footer {
+  background-color: #8B0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 20px;
 }

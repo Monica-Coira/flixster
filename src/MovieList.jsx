@@ -9,9 +9,9 @@ function MovieList({data}){
         <main>
             <div className="movie-list-container">
                 {
-                    movieData.map(obj => {
+                    data.results.map(obj => {
                         return (
-                            <MovieCard key={obj.title} image={obj.image} title={obj.title} rating={obj.rating} />
+                            <MovieCard key={obj.id} image={obj.image} title={obj.title} rating={obj.vote_average} />
                         )
                     })
                 }
