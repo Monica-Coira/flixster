@@ -3,15 +3,15 @@ import './MovieList.css'
 import { parseMovieData } from "./utils/utils";
 
 function MovieList({data}){
-    const movieData = parseMovieData(data.results);
+    //const movieData = parseMovieData(data.results);
 
     return (
         <main>
             <div className="movie-list-container">
                 {
-                    data.results.map(obj => {
+                    data.map(obj => {
                         return (
-                            <MovieCard key={obj.id} image={obj.image} title={obj.title} rating={obj.vote_average} />
+                            <MovieCard key={obj.id} image={obj.poster_path} title={obj.original_title} rating={obj.vote_average} />
                         )
                     })
                 }
