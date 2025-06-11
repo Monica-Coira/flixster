@@ -17,7 +17,6 @@ function SearchForm({fetchSearchData, fetchData}){
     }
 
     const handleEnterKey = (event) => {
-        console.log("key down")
         if (event.key === 'Enter'){
             handleSearch();
         }

@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import MovieList from './MovieList';
 import SearchForm from './SearchForm.jsx';
+import SortForm from './SortForm.jsx';
 
 const App = () => {
   const [movieData, setMovieData] = useState([])
   const [pageCount, setPageCount] = useState(1)
+  const [sortChosenItem, setSortChosenItem] = useState("")
 
   const fetchData = async () => {
     try {
@@ -58,23 +60,35 @@ const App = () => {
     }
   };
 
+  const fetchSortData = async (chosenValue) => {
+    try {
+      setSortChosenItem(chosenValue);
+    } 
+    catch (error) {
+      console.error(error);
+    }
+  };
+
   const incrementPageCount = () => {
     setPageCount((prev) => prev + 1);
   }
 
   useEffect(() =>  {
       fetchData();
-  }, [pageCount])
+  }, [pageCount, sortChosenItem])
   
   return (
     <>
       <header className="app-header">
         <h1>Flixster</h1>
-        <SearchForm fetchSearchData={fetchSearchData} fetchData={fetchData}/>
+        <section className="form-section">
+          <SearchForm fetchSearchData={fetchSearchData} fetchData={fetchData}/>
+          <SortForm fetchSortData={fetchSortData}/>
+        </section>
       </header>
 
       <main className="app-main">
-        <MovieList data={movieData} />
+        <MovieList data={movieData} sortChosenItem={sortChosenItem}/>
         <button onClick={incrementPageCount} className="load-more-button">Load More</button>
       </main>
 
