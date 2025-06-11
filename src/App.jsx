@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import MovieList from './MovieList';
 import SearchForm from './SearchForm.jsx';
@@ -6,10 +6,8 @@ import SearchForm from './SearchForm.jsx';
 const App = () => {
   const [movieData, setMovieData] = useState([])
   const [pageCount, setPageCount] = useState(1)
-  console.log(pageCount)
 
   const fetchData = async () => {
-    console.log("fetched")
     try {
       const apiKey = import.meta.env.VITE_READ_API_KEY;
 
@@ -25,8 +23,12 @@ const App = () => {
         throw new Error('Failed to fetch movie data');
       }
       const data = await response.json();
-      // setMovieData((prev) => [...data.results]);
-      setMovieData((prev) => [...prev, ...data.results])
+      if (pageCount === 1){
+        setMovieData((prev) => [...data.results]);
+      }
+      else {
+        setMovieData((prev) => [...prev, ...data.results])
+      }
     } 
     catch (error) {
       console.error(error);
@@ -35,12 +37,11 @@ const App = () => {
 
   const incrementPageCount = () => {
     setPageCount((prev) => prev + 1);
-    fetchData();
   }
 
   useEffect(() =>  {
-    fetchData();
-  }, [])
+      fetchData();
+  }, [pageCount])
   
   return (
     <>
