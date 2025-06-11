@@ -3,8 +3,7 @@ import './MovieList.css'
 import { parseMovieData } from "./utils/utils";
 
 function MovieList({data}){
-    //const movieData = parseMovieData(data.results);
-
+    
     return (
         <main>
             <div className="movie-list-container">
