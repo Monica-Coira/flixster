@@ -2,8 +2,10 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 11px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    
 }

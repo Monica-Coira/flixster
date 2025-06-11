@@ -62,6 +62,7 @@
 }
 
 footer {
+  display: flex;
   background-color: #8B0000;
   display: flex;
   align-items: center;
