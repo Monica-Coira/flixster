@@ -70,7 +70,7 @@ const App = () => {
     <>
       <header className="app-header">
         <h1>Flixster</h1>
-        <SearchForm fetchSearchData={fetchSearchData}/>
+        <SearchForm fetchSearchData={fetchSearchData} fetchData={fetchData}/>
       </header>
 
       <main className="app-main">
