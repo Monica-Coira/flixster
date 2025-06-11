@@ -35,6 +35,29 @@ const App = () => {
     }
   };
 
+  const fetchSearchData = async (searchQuery) => {
+    try {
+        const apiKey = import.meta.env.VITE_READ_API_KEY;
+
+        const options = {
+            method: 'GET',
+            headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${apiKey}`
+            }
+        };
+        const searchResponse = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}`, options)
+        if (!searchResponse.ok) {
+            throw new Error('Failed to fetch movie data');
+        }
+        const searchData = await searchResponse.json();
+        setMovieData(searchData.results)
+    } 
+    catch (error) {
+        console.error(error);
+    }
+  };
+
   const incrementPageCount = () => {
     setPageCount((prev) => prev + 1);
   }
@@ -47,7 +70,7 @@ const App = () => {
     <>
       <header className="app-header">
         <h1>Flixster</h1>
-        <SearchForm />
+        <SearchForm fetchSearchData={fetchSearchData}/>
       </header>
 
       <main className="app-main">
