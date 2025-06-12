@@ -1,5 +1,6 @@
 import MovieCard from "./MovieCard";
 import './MovieList.css'
+import Modal from "./Modal";
 
 function MovieList({data, sortChosenItem}){
     function removeDuplicates(data){

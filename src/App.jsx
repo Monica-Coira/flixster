@@ -3,6 +3,7 @@ import './App.css'
 import MovieList from './MovieList';
 import SearchForm from './SearchForm.jsx';
 import SortForm from './SortForm.jsx';
+import Modal from './Modal.jsx';
 
 const App = () => {
   const [movieData, setMovieData] = useState([])
