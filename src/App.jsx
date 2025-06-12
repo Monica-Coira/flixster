@@ -9,6 +9,8 @@ const App = () => {
   const [movieData, setMovieData] = useState([])
   const [pageCount, setPageCount] = useState(1)
   const [sortChosenItem, setSortChosenItem] = useState("")
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [modalData, setModalData] = useState([])
 
   const fetchData = async () => {
     try {
@@ -61,6 +63,35 @@ const App = () => {
     }
   };
 
+  const fetchModalData = async (chosenMovieId) => {
+    try {
+        handleModalOpen();
+        const apiKey = import.meta.env.VITE_READ_API_KEY;
+
+        const options = {
+            method: 'GET',
+            headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${apiKey}`
+            }
+        };
+        const modalResponse = await fetch(`https://api.themoviedb.org/3/movie/${chosenMovieId}`, options)
+        if (!modalResponse.ok) {
+            throw new Error('Failed to fetch movie data');
+        }
+        const initialModalData = await modalResponse.json();
+
+        setModalData(initialModalData)
+    } 
+    catch (error) {
+        console.error(error);
+    }
+  };
+
+  const handleModalOpen = () => {
+    setModalIsOpen(true);
+  }
+
   const fetchSortData = async (chosenValue) => {
     try {
       setSortChosenItem(chosenValue);
@@ -89,8 +120,9 @@ const App = () => {
       </header>
 
       <main className="app-main">
-        <MovieList data={movieData} sortChosenItem={sortChosenItem}/>
+        <MovieList data={movieData} sortChosenItem={sortChosenItem} fetchModalData={fetchModalData}/>
         <button onClick={incrementPageCount} className="load-more-button">Load More</button>
+        <Modal modalIsOpen={modalIsOpen} onClose={setModalIsOpen} modalData={modalData}/>
       </main>
 
       <footer>

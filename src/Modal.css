@@ -1,5 +1,5 @@
 .modal {
-    display: none; 
+    display: flex; 
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -8,16 +8,38 @@
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    border-radius: 10px;
 }
 
 .modal-content {
-    background-color: #f0f0f0;
-    margin: 15% auto; 
-    padding: 20px;
+    background-color: #e8e9eb;
+    margin: 5% auto; 
+    padding: 40px;
     border: 1px solid #888;
-    width: 70%; 
-    align-items: flex-start;
+    width: 60%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-button {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.modal-content img {
+    border-radius: 10px;
 }
 
 .close {
@@ -38,26 +60,4 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-}
-
-.modalHeader {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding-left: 15px;
-}
-
-.leftOfModal img {
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-.modalLeftContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
 }
