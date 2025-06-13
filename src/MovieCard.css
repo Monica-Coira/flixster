@@ -7,11 +7,28 @@
     border-radius: 10px;
 }
 
-.movie-card img {
+.movie-card-image {
     display: block;
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.favorite-image {
+    width: 6%;
+    height: 3%;
+    padding-top: 2px;
+}
+
+.watched-image {
+    width: 8%;
+    height: 4%;
+    margin-left: 15px;
+}
+
+.movie-card-buttons {
+    display: flex;
+    justify-content: center;
 }
 
 .movie-card:hover {
