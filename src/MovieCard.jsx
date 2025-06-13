@@ -5,29 +5,29 @@ import { useState } from 'react';
 function MovieCard({image, title, rating, id, onCardClick}) {
     const movieImageUrl = `https://image.tmdb.org/t/p/w500${image}`;
     const [favoriteButton, setFavoriteButton] = useState(false)
-    const [favoriteButtonUrl, setFavoriteButtonUrl] = useState("public/heartEmpty.png")
+    const [favoriteButtonUrl, setFavoriteButtonUrl] = useState("/src/assets/heartEmpty.png")
     const [movieIsWatched, setMovieIsWatched] = useState(false)
-    const [watchedUrl, setWatchedUrl] = useState("public/eye-slash.png")
+    const [watchedUrl, setWatchedUrl] = useState("/src/assets/eye-slash.png")
 
     const handleFavoriteButton = () => {
         if(!favoriteButton){
             setFavoriteButton(true);
-            setFavoriteButtonUrl("public/heartRed.png");
+            setFavoriteButtonUrl("/src/assets/heartRed.png");
         }
         if(favoriteButton){
             setFavoriteButton(false);
-            setFavoriteButtonUrl("public/heartEmpty.png");
+            setFavoriteButtonUrl("/src/assets/heartEmpty.png");
         }
     }
 
     const handleWatchedButton = () => {
         if(!movieIsWatched){
             setMovieIsWatched(true);
-            setWatchedUrl("public/eye.png");
+            setWatchedUrl("/src/assets/eye.png");
         }
         if(movieIsWatched){
             setMovieIsWatched(false);
-            setWatchedUrl("public/eye-slash.png");
+            setWatchedUrl("/src/assets/eye-slash.png");
         }
     }
 

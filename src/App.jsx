@@ -130,6 +130,10 @@ const App = () => {
     setPageCount((prev) => prev + 1);
   }
 
+  const revertPageCount = () => {
+    setPageCount(1);
+  }
+
   useEffect(() =>  {
       fetchData();
   }, [pageCount, sortChosenItem])
@@ -139,7 +143,7 @@ const App = () => {
       <header className="app-header">
         <h1>Flixster</h1>
         <section className="form-section">
-          <SearchForm fetchSearchData={fetchSearchData} fetchData={fetchData}/>
+          <SearchForm fetchSearchData={fetchSearchData} fetchData={fetchData} revertPageCount={revertPageCount}/>
           <SortForm fetchSortData={fetchSortData}/>
         </section>
       </header>
