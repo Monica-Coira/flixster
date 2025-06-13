@@ -3,7 +3,7 @@ import './MovieList.css'
 import Modal from "./Modal";
 import { useState, useEffect } from "react";
 
-function MovieList({data, sortChosenItem, fetchModalData}){
+function MovieList({data, sortChosenItem, fetchModalData, fetchTrailerData}){
     const [cardClicked, setCardClicked] = useState(false)
     function removeDuplicates(data){
         return (data.filter((value, index, self) =>
@@ -15,6 +15,7 @@ function MovieList({data, sortChosenItem, fetchModalData}){
 
     const onCardClick = (event) => {
         fetchModalData(event.target.querySelector(".movie-card-id").innerText);
+        fetchTrailerData(event.target.querySelector(".movie-card-id").innerText);
     }
 
     if (sortChosenItem === "title"){
