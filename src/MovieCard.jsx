@@ -1,33 +1,35 @@
-import './MovieCard.css';
+import '/src/MovieCard.css';
 import Modal from './Modal';
 import { useState } from 'react';
+import heartRed from "/src/assets/heartRed.png";
+import heartEmpty from "/src/assets/heartEmpty.png";
 
 function MovieCard({image, title, rating, id, onCardClick}) {
     const movieImageUrl = `https://image.tmdb.org/t/p/w500${image}`;
     const [favoriteButton, setFavoriteButton] = useState(false)
-    const [favoriteButtonUrl, setFavoriteButtonUrl] = useState("./src/assets/heartEmpty.png")
+    const [favoriteButtonUrl, setFavoriteButtonUrl] = useState(heartEmpty)
     const [movieIsWatched, setMovieIsWatched] = useState(false)
-    const [watchedUrl, setWatchedUrl] = useState("./src/assets/eye-slash.png")
+    const [watchedUrl, setWatchedUrl] = useState("/src/assets/eye-slash.png")
 
     const handleFavoriteButton = () => {
         if(!favoriteButton){
             setFavoriteButton(true);
-            setFavoriteButtonUrl("./src/assets/heartRed.png");
+            setFavoriteButtonUrl(heartRed);
         }
         if(favoriteButton){
             setFavoriteButton(false);
-            setFavoriteButtonUrl("./src/assets/heartEmpty.png");
+            setFavoriteButtonUrl(heartEmpty);
         }
     }
 
     const handleWatchedButton = () => {
         if(!movieIsWatched){
             setMovieIsWatched(true);
-            setWatchedUrl("./src/assets/eye.png");
+            setWatchedUrl("/src/assets/eye.png");
         }
         if(movieIsWatched){
             setMovieIsWatched(false);
-            setWatchedUrl("./src/assets/eye-slash.png");
+            setWatchedUrl("/src/assets/eye-slash.png");
         }
     }
 
