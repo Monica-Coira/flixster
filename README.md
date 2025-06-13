@@ -2,7 +2,7 @@
 
 Submitted by: **Monica Coira**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **25** hours spent in total
 
 Deployed Application (**required**): [Flixster Deployed Site](https://flixster-w5t5.onrender.com)
 
@@ -100,23 +100,28 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-w
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`<div>
+    <a href="https://www.loom.com/share/4ea39ef0684a42c8af3fbd7eaa4225e0">
+      <p>Monica's Flixster</p>
+    </a>
+    <a href="https://www.loom.com/share/4ea39ef0684a42c8af3fbd7eaa4225e0">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4ea39ef0684a42c8af3fbd7eaa4225e0-4b81b7cbe166d39e-full-play.gif">
+    </a>
+  </div>`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, covering creating components and fetching data using an API in this week's labs helped me tremendously when fetching data using the TMDb API. Using the information from the labs, I was able to successfully use my API key to fetch movie data from the TMDb API, create the MovieCard and MovieList components, and dynamically update the components with the API data. I felt less prepared to implement the search functionality but, after researching common implementations of search bars using React, I was able to implement by own version of the search bar.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+During this project, I spent additional time reviewing and improving my code quality and efficiency. Therefore, if I had more time, I would've implemented the Sidebar stretch feature, which was the only stretch feature that I did not have time to complete this week.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+During my project demo, I successfully showed how my required and stretch features all work and highlighted the different functionalities of my website. I also shared my favorite feature to work on, which was the sort feature, and what I found to be the most challenging feature to work on, which was the search feature. I noticed that one of my peers implemented animations when opening and closing their modal and I would like to add that to my next project.
 
 ### Open-source libraries used
 
@@ -124,4 +129,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Thank you to Matthew, Virsaviya, and Thomas for helping me with my project.
