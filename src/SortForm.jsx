@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function SortForm({fetchSortData}){
+const SortForm = ({fetchSortData}) => {
     const [chosenValue, setChosenValue] = useState("")
 
     const handleSortChange = (event) => {

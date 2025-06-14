@@ -7,7 +7,7 @@ import eye from "/src/assets/eye.png";
 import eyeSlash from "/src/assets/eye-slash.png";
 import moviePlaceholder from "/src/assets/movie.png";
 
-function MovieCard({image, title, rating, id, onCardClick}) {
+const MovieCard = ({image, title, rating, id, onCardClick}) => {
     const movieImageUrl = `https://image.tmdb.org/t/p/w500${image}`;
     const placeholderImage = moviePlaceholder;
     const [favoriteButton, setFavoriteButton] = useState(false)

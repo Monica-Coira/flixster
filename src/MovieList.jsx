@@ -3,9 +3,9 @@ import './MovieList.css'
 import Modal from "./Modal";
 import { useState, useEffect } from "react";
 
-function MovieList({data, sortChosenItem, fetchModalData, fetchTrailerData}){
+const MovieList = ({data, sortChosenItem, fetchModalData, fetchTrailerData}) => {
     const [cardClicked, setCardClicked] = useState(false)
-    function removeDuplicates(data){
+    const removeDuplicates = (data) => {
         return (data.filter((value, index, self) =>
             index === self.findIndex((i) => (
                 i.id === value.id

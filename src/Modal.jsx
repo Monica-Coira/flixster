@@ -1,7 +1,7 @@
 import './Modal.css'
 import { useState, useEffect } from 'react';
 
-function Modal({modalIsOpen, onClose, modalData, trailerData}){
+const Modal = ({modalIsOpen, onClose, modalData, trailerData}) => {
     const modalImageUrl = `https://image.tmdb.org/t/p/w500${modalData.backdrop_path}`;
     
     if (!modalIsOpen){

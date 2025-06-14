@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchForm({fetchSearchData, fetchData, revertPageCount}){
+const SearchForm = ({fetchSearchData, fetchData, revertPageCount}) => {
     const [searchQuery, setSearchQuery] = useState("")
 
     const handleSearchChange = (event) => {
