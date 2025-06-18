@@ -4,6 +4,8 @@ import MovieList from './MovieList';
 import SearchForm from './SearchForm.jsx';
 import SortForm from './SortForm.jsx';
 import Modal from './Modal.jsx';
+import { API_KEY } from './utils/apiConfig.js'
+import { API_ENDPOINT } from './utils/apiConfig.js'
 
 const App = () => {
   const [movieData, setMovieData] = useState([])
@@ -15,16 +17,14 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const apiKey = import.meta.env.VITE_READ_API_KEY;
-
       const options = {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: `Bearer ${apiKey}`
+          Authorization: `Bearer ${API_KEY}`
         }
       };
-      const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageCount}`, options)
+      const response = await fetch(`${API_ENDPOINT}/movie/now_playing?language=en-US&page=${pageCount}`, options)
       if (!response.ok) {
         throw new Error('Failed to fetch movie data');
       }
@@ -43,16 +43,14 @@ const App = () => {
 
   const fetchSearchData = async (searchQuery) => {
     try {
-        const apiKey = import.meta.env.VITE_READ_API_KEY;
-
         const options = {
             method: 'GET',
             headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${apiKey}`
+            Authorization: `Bearer ${API_KEY}`
             }
         };
-        const searchResponse = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}`, options)
+        const searchResponse = await fetch(`${API_ENDPOINT}/search/movie?query=${searchQuery}`, options)
         if (!searchResponse.ok) {
             throw new Error('Failed to fetch movie data');
         }
@@ -67,21 +65,19 @@ const App = () => {
   const fetchModalData = async (chosenMovieId) => {
     try {
         handleModalOpen();
-        const apiKey = import.meta.env.VITE_READ_API_KEY;
 
         const options = {
             method: 'GET',
             headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${apiKey}`
+            Authorization: `Bearer ${API_KEY}`
             }
         };
-        const modalResponse = await fetch(`https://api.themoviedb.org/3/movie/${chosenMovieId}`, options)
+        const modalResponse = await fetch(`${API_ENDPOINT}/movie/${chosenMovieId}`, options)
         if (!modalResponse.ok) {
             throw new Error('Failed to fetch movie data');
         }
         const initialModalData = await modalResponse.json();
-
         setModalData(initialModalData)
     } 
     catch (error) {
@@ -91,21 +87,18 @@ const App = () => {
 
   const fetchTrailerData = async (chosenMovieId) => {
     try {
-        const apiKey = import.meta.env.VITE_READ_API_KEY;
-
         const options = {
             method: 'GET',
             headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${apiKey}`
+            Authorization: `Bearer ${API_KEY}`
             }
         };
-        const trailerResponse = await fetch(`https://api.themoviedb.org/3/movie/${chosenMovieId}/videos?language=en-US`, options)
+        const trailerResponse = await fetch(`${API_ENDPOINT}/movie/${chosenMovieId}/videos?language=en-US`, options)
         if (!trailerResponse.ok) {
             throw new Error('Failed to fetch movie data');
         }
         const initialTrailerData = await trailerResponse.json();
-
         setTrailerData(initialTrailerData.results[0].key)
     } 
     catch (error) {
