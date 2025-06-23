@@ -15,7 +15,7 @@ const App = () => {
   const [modalData, setModalData] = useState([])
   const [trailerData, setTrailerData] = useState([])
 
-  const fetchData = async () => {
+  const fetchMovieData = async (parameter) => {
     try {
       const options = {
         method: 'GET',
@@ -24,86 +24,42 @@ const App = () => {
           Authorization: `Bearer ${API_KEY}`
         }
       };
-      const response = await fetch(`${API_ENDPOINT}/movie/now_playing?language=en-US&page=${pageCount}`, options)
+      const response = await fetch(`${API_ENDPOINT}${parameter}`, options)
       if (!response.ok) {
         throw new Error('Failed to fetch movie data');
       }
       const data = await response.json();
-      if (pageCount === 1){
-        setMovieData((prev) => [...data.results]);
-      }
-      else {
-        setMovieData((prev) => [...prev, ...data.results])
-      }
+      return data;
     } 
     catch (error) {
       console.error(error);
     }
   };
 
-  const fetchSearchData = async (searchQuery) => {
-    try {
-        const options = {
-            method: 'GET',
-            headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${API_KEY}`
-            }
-        };
-        const searchResponse = await fetch(`${API_ENDPOINT}/search/movie?query=${searchQuery}`, options)
-        if (!searchResponse.ok) {
-            throw new Error('Failed to fetch movie data');
-        }
-        const searchData = await searchResponse.json();
-        setMovieData(searchData.results)
-    } 
-    catch (error) {
-        console.error(error);
+  const fetchData = async () => {
+    const data = await fetchMovieData(`/movie/now_playing?language=en-US&page=${pageCount}`);
+    if (pageCount === 1){
+      setMovieData((prev) => [...data.results]);
     }
+    else {
+      setMovieData((prev) => [...prev, ...data.results])
+    }
+  };
+
+  const fetchSearchData = async (searchQuery) => {
+    const searchData = await fetchMovieData(`/search/movie?query=${searchQuery}`);
+    setMovieData(searchData.results)
   };
 
   const fetchModalData = async (chosenMovieId) => {
-    try {
-        handleModalOpen();
-
-        const options = {
-            method: 'GET',
-            headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${API_KEY}`
-            }
-        };
-        const modalResponse = await fetch(`${API_ENDPOINT}/movie/${chosenMovieId}`, options)
-        if (!modalResponse.ok) {
-            throw new Error('Failed to fetch movie data');
-        }
-        const initialModalData = await modalResponse.json();
-        setModalData(initialModalData)
-    } 
-    catch (error) {
-        console.error(error);
-    }
+    handleModalOpen();
+    const initialModalData = await fetchMovieData(`/movie/${chosenMovieId}`);
+    setModalData(initialModalData)
   };
 
   const fetchTrailerData = async (chosenMovieId) => {
-    try {
-        const options = {
-            method: 'GET',
-            headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${API_KEY}`
-            }
-        };
-        const trailerResponse = await fetch(`${API_ENDPOINT}/movie/${chosenMovieId}/videos?language=en-US`, options)
-        if (!trailerResponse.ok) {
-            throw new Error('Failed to fetch movie data');
-        }
-        const initialTrailerData = await trailerResponse.json();
-        setTrailerData(initialTrailerData.results[0].key)
-    } 
-    catch (error) {
-        console.error(error);
-    }
+    const initialTrailerData = await fetchMovieData(`/movie/${chosenMovieId}/videos?language=en-US`);
+    setTrailerData(initialTrailerData.results[0].key)
   };
 
   const handleModalOpen = () => {
