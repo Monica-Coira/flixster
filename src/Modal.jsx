@@ -58,7 +58,6 @@ const Modal = ({modalIsOpen, onClose, modalData, trailerData}) => {
             </div>
         </div>
     );
-
 }
 
 export default Modal;

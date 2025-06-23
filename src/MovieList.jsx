@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 const MovieList = ({data, sortChosenItem, fetchModalData, fetchTrailerData}) => {
     const [cardClicked, setCardClicked] = useState(false)
+    
     const removeDuplicates = (data) => {
         return (data.filter((value, index, self) =>
             index === self.findIndex((i) => (
